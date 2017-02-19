@@ -1,0 +1,50 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'L9'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" ------------------------------------------------ Vundle END
+
+
+scripte utf-8
+set background=dark
+set mouse=a
+set colorcolumn=80
+set t_Co=256
+colorscheme desert256 
+
+
+set nu ru sc wrap ls=2 lz                " -- appearance
+set noet bs=2 ts=4 sw=4 sts=0            " -- tabstop
+set noai nosi hls is ic cf ws scs magic  " -- search
+set sol sel=inclusive mps+=<:>           " -- moving around
+set ut=10 uc=200                         " -- swap control
+set report=0 lpl wmnu                    " -- misc.
+set nuw=6
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
+autocmd BufNewFile,BufRead *.less setlocal ts=2 sts=2 sw=2
+
+set fenc=utf-8 ff=unix ffs=unix,dos,mac
+set fencs=utf-8,cp949,cp932,euc-jp,shift-jis,big5,latin2,ucs2-le
+
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
+syn enable
+syn sync maxlines=1000
+filet plugin indent on
+let php_sync_method = 0
+let html_wrong_comments = 1
