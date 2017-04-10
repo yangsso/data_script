@@ -1,6 +1,10 @@
+# -*- coding: utf-8 -*-
 import datetime
 import re
+import csv
 
+import xlrd
+import openpyxl
 
 class Common():
         
@@ -53,4 +57,25 @@ class Common():
                 time = time + datetime.timedelta(hours=9)
                 return time
 
+
+        def xls_to_csv(xls):
+            csv_file = xls.replace('xls', 'csv')
+
+            with xlrd.open_workbook(xls) as wb:
+                sh = wb.sheet_by_index(0)  # or wb.sheet_by_name('name_of_the_sheet_here')
+                with open(csv_file, 'wb') as f:
+                    c = csv.writer(f)
+                    for r in range(sh.nrows):
+                        c.writerow(sh.row_values(r))
+
+
+        def xlsx_to_csv(xlsx):
+            csv_file = xlsx.replace('xlsx', 'csv')
+
+            wb = openpyxl.load_workbook(xlsx)
+            sh = wb.get_active_sheet()
+            with open(csv_file, 'wb') as f:
+                c = csv.writer(f)
+                for r in sh.rows:
+                    c.writerow([cell.value for cell in r])
 
